@@ -4,7 +4,10 @@ WORKDIR /app
 
 COPY web ./web
 
-RUN cd web && npm install && npm run build
+RUN npm install -g pnpm && \
+    cd web && \
+    pnpm install --no-frozen-lockfile && \
+    pnpm run build
 
 FROM python:3.10.13-slim
 
